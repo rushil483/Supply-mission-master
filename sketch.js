@@ -26,12 +26,19 @@ function setup() {
 
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
+    left = createSprite(width/2-100,610,20,100);
+	left.shapeColor = "red"
+	bottom = createSprite(360,650,110,20);
+	bottom.shapeColor = "red"
+	right = createSprite(width/2+23,610,20,100);
+	right.shapeColor = "red"
+
 
 
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:2, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -50,6 +57,8 @@ function draw() {
   background(0);
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
+
+  packageSprite.collide(bottom);
   drawSprites();
  
 }
